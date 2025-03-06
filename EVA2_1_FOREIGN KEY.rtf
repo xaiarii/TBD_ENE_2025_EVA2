@@ -1,0 +1,131 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red10\green77\blue76;\red221\green221\blue221;
+\red203\green74\blue5;\red223\green223\blue223;\red44\green44\blue44;\red89\green89\blue89;}
+{\*\expandedcolortbl;;\csgray\c0;\cspthree\c15308\c36657\c36949;\cspthree\c89412\c89412\c89412;
+\cspthree\c78529\c40049\c15121;\cspthree\c90000\c90000\c90000;\cspthree\c22745\c22745\c22745;\cspthree\c42353\c42353\c42353;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 Last login: Wed Mar  5 11:07:37 on console\
+xaia@MacBook-Air-de-Angel ~ % mysqlsh\
+MySQL Shell 9.2.0\
+\
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.\
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.\
+Other names may be trademarks of their respective owners.\
+\
+Type '\\help' or '\\?' for help; '\\quit' to exit.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb5  SQL \cf2 \cb2 > \cb1 \\connect --mc root@localhost\
+Creating a Classic session to 'root@localhost'\
+Fetching global names for auto-completion... Press ^C to stop.\
+Your MySQL connection id is 8\
+Server version: 9.1.0 MySQL Community Server - GPL\
+No default schema selected; type \\use <schema> to set one.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb5  SQL \cf2 \cb2 > \cb1 create database tbd_u2;\
+Query OK, 1 row affected (0.0124 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb5  SQL \cf2 \cb2 > \cb1 use tbd_u2\
+Default schema set to `tbd_u2`.\
+Fetching global names, object names from `tbd_u2` for auto-completion... Press ^C to stop.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table banco(\
+\cb2                               -> \cb1 bancoid int not null key auto_increment,\
+\cb2                               -> \cb1 nombre varchar(50) not null;\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table banco( bancoid int not null key auto_increment, nombre varchar(50) not null);\
+Query OK, 0 rows affected (0.0154 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 show tables;\
++------------------+\
+| Tables_in_tbd_u2 |\
++------------------+\
+| banco            |\
++------------------+\
+1 row in set (0.0068 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 desc banco;\
++---------+-------------+------+-----+---------+----------------+\
+| Field   | Type        | Null | Key | Default | Extra          |\
++---------+-------------+------+-----+---------+----------------+\
+| bancoid | int         | NO   | PRI | NULL    | auto_increment |\
+| nombre  | varchar(50) | NO   |     | NULL    |                |\
++---------+-------------+------+-----+---------+----------------+\
+2 rows in set (0.0066 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into banco(nombre)\
+\cb2                               -> \cb1 values ("City"),("Scotiabank"),("HSBC"),("Santander"),("BBVA");\
+Query OK, 5 rows affected (0.0061 sec)\
+\
+Records: 5  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table tarjeta(\
+\cb2                               -> \cb1 tarjetaid int not null key auto_increment,\
+\cb2                               -> \cb1 nombre varchar(50));\
+Query OK, 0 rows affected (0.0082 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into tarjeta(nombre)\
+\cb2                               -> \cb1 values ("Mastercard"),("Visa"),("Amex");\
+Query OK, 3 rows affected (0.0031 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table cliente(\
+\cb2                               -> \cb1 clienteid int not null key auto_increment,\
+\cb2                               -> \cb1 nombre varchar(50) not nullm\
+\cb2                               -> \cb1 apellidos varchar(50),^C\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table cliente(\
+\cb2                               -> \cb1 clienteid int not null key auto_increment,\
+\cb2                               -> \cb1 nombre varchar(50) not null,\
+\cb2                               -> \cb1 apellidos varchar(50) not null);\
+Query OK, 0 rows affected (0.0089 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into cliente(nombre,apellidos)\
+\cb2                               -> \cb1 values("Juan","Perez"),("Angel","Chavira"),("Jose","Madero");\
+Query OK, 3 rows affected (0.0032 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table tarjetaCliente(\
+\cb2                               -> \cb1 tarjetaclID int not null key auto_increment,\
+\cb2                               -> \cb1 clienteid int not null,\
+\cb2                               -> \cb1 bancoid int not null, \
+\cb2                               -> \cb1 tarjeta id int not null);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'id int not null)' at line 5\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table tarjetaCliente( tarjetaclID int not null key auto_increment, clienteid int not null, bancoid int not null,  tarjetaid int not null);\
+Query OK, 0 rows affected (0.0090 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 inset into tarjetaclientes(clienteid,bancoid,tarjetaid)\
+\cb2                               -> \cb1 values(1,1,1),(2,2,2)(3,3,3);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inset into tarjetaclientes(clienteid,bancoid,tarjetaid)\
+values(1,1,1),(2,2,2)(3,' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 inset into tarjetaCliente(clienteid,bancoid,tarjetaid) values(1,1,1),(2,2,2)(3,3,3);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inset into tarjetaCliente(clienteid,bancoid,tarjetaid) values(1,1,1),(2,2,2)(3,3' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 desc tarjetaCliente;\
++-------------+------+------+-----+---------+----------------+\
+| Field       | Type | Null | Key | Default | Extra          |\
++-------------+------+------+-----+---------+----------------+\
+| tarjetaclID | int  | NO   | PRI | NULL    | auto_increment |\
+| clienteid   | int  | NO   |     | NULL    |                |\
+| bancoid     | int  | NO   |     | NULL    |                |\
+| tarjetaid   | int  | NO   |     | NULL    |                |\
++-------------+------+------+-----+---------+----------------+\
+4 rows in set (0.0034 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 inset into tarjetaCliente(clienteid,bancoid,tarjetaid) values(1,1,1),(2,2,2),(3,3,3);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inset into tarjetaCliente(clienteid,bancoid,tarjetaid) values(1,1,1),(2,2,2),(3,' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into tarjetaCliente(clienteid,bancoid,tarjetaid) values(1,1,1),(2,2,2),(3,3,3);\
+Query OK, 3 rows affected (0.0028 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tarjetaCliente;\
++-------------+-----------+---------+-----------+\
+| tarjetaclID | clienteid | bancoid | tarjetaid |\
++-------------+-----------+---------+-----------+\
+|           1 |         1 |       1 |         1 |\
+|           2 |         2 |       2 |         2 |\
+|           3 |         3 |       3 |         3 |\
++-------------+-----------+---------+-----------+\
+3 rows in set (0.0010 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 delet * from tarjetaCliente;\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delet * from tarjetaCliente' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 delete * from tarjetaCliente;\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from tarjetaCliente' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 drop table tarjetaCliente;\
+Query OK, 0 rows affected (0.0084 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table tarjetaCliente(\
+\cb2                               -> \cb1 tarjetaclID int not null key auto_increment,\
+\cb2                               -> \cb1 clienteid int not null,\
+\cb2                               -> \cb1 bancoid int not null,\
+\cb2                               -> \cb1 tarjetaid int not null,\
+\cb2                               -> \cb1 foreign key (clienteid) references cliente(clienteid));\
+Query OK, 0 rows affected (0.0135 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > }
