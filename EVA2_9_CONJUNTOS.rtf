@@ -1,0 +1,1051 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red10\green77\blue76;\red221\green221\blue221;
+\red203\green74\blue5;\red223\green223\blue223;\red44\green44\blue44;\red89\green89\blue89;}
+{\*\expandedcolortbl;;\csgray\c0;\cspthree\c15308\c36657\c36949;\cspthree\c89412\c89412\c89412;
+\cspthree\c78529\c40049\c15121;\cspthree\c90000\c90000\c90000;\cspthree\c22745\c22745\c22745;\cspthree\c42353\c42353\c42353;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 Last login: Wed Mar 19 16:14:11 on ttys000\
+xaia@MacBook-Air-de-Angel ~ % mysqlsh\
+MySQL Shell 9.2.0\
+\
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.\
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.\
+Other names may be trademarks of their respective owners.\
+\
+Type '\\help' or '\\?' for help; '\\quit' to exit.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb5  SQL \cf2 \cb2 > \cb1 \\connect --mc root@localhost\
+Creating a Classic session to 'root@localhost'\
+Fetching global names for auto-completion... Press ^C to stop.\
+Your MySQL connection id is 11\
+Server version: 9.1.0 MySQL Community Server - GPL\
+No default schema selected; type \\use <schema> to set one.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb5  SQL \cf2 \cb2 > \cb1 use tbd_u2;\
+Default schema set to `tbd_u2`.\
+Fetching global names, object names from `tbd_u2` for auto-completion... Press ^C to stop.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create tablaA(\
+\cb2                               -> \cb1 id int,\
+\cb2                               -> \cb1 valor varchar(10));\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tablaA(\
+id int,\
+valor varchar(10))' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table TablaA(\
+\cb2                               -> \cb1 id int,\
+\cb2                               -> \cb1 valor varchar(10));\
+Query OK, 0 rows affected (0.0210 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table TablaB( id int, valor varchar(10));\
+Query OK, 0 rows affected (0.0096 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into tablaA\
+\cb2                               -> \cb1 values(1,"A"),(2,"B"),(3,"C"),(4,"D");\
+Query OK, 4 rows affected (0.0035 sec)\
+\
+Records: 4  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into tablaB values(1,"X"),(2,"Y"),(3,"Z"),(4,"A"),(5,"B");\
+Query OK, 5 rows affected (0.0057 sec)\
+\
+Records: 5  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa\
+\cb2                               -> \cb1 ;\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | A     |\
+|  2 | B     |\
+|  3 | C     |\
+|  4 | D     |\
++----+-------+\
+4 rows in set (0.0011 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablab ;\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | X     |\
+|  2 | Y     |\
+|  3 | Z     |\
+|  4 | A     |\
+|  5 | B     |\
++----+-------+\
+5 rows in set (0.0005 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa\
+\cb2                               -> \cb1 union\
+\cb2                               -> \cb1 select * from tablab;\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | A     |\
+|  2 | B     |\
+|  3 | C     |\
+|  4 | D     |\
+|  1 | X     |\
+|  2 | Y     |\
+|  3 | Z     |\
+|  4 | A     |\
+|  5 | B     |\
++----+-------+\
+9 rows in set (0.0008 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 show sakila;\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sakila' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 show tables;\
++------------------+\
+| Tables_in_tbd_u2 |\
++------------------+\
+| banco            |\
+| cliente          |\
+| direccioncliente |\
+| producto         |\
+| TablaA           |\
+| TablaB           |\
+| tarjeta          |\
+| tarjetacliente   |\
+| venta            |\
+| venta_detalle    |\
++------------------+\
+10 rows in set (0.0029 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 use sakila;\
+Default schema set to `sakila`.\
+Fetching global names, object names from `sakila` for auto-completion... Press ^C to stop.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  sakila \cb5  SQL \cf2 \cb2 > \cb1 show tables;\
++----------------------------+\
+| Tables_in_sakila           |\
++----------------------------+\
+| actor                      |\
+| actor_info                 |\
+| address                    |\
+| category                   |\
+| city                       |\
+| country                    |\
+| customer                   |\
+| customer_list              |\
+| film                       |\
+| film_actor                 |\
+| film_category              |\
+| film_list                  |\
+| film_text                  |\
+| inventory                  |\
+| language                   |\
+| nicer_but_slower_film_list |\
+| payment                    |\
+| rental                     |\
+| sales_by_film_category     |\
+| sales_by_store             |\
+| staff                      |\
+| staff_list                 |\
+| store                      |\
++----------------------------+\
+23 rows in set (0.0018 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  sakila \cb5  SQL \cf2 \cb2 > \cb1 select first_name, last_name from actor\
+\cb2                               -> \cb1 union\
+\cb2                               -> \cb1 select first_name, last_name from customer;\
++-------------+--------------+\
+| first_name  | last_name    |\
++-------------+--------------+\
+| PENELOPE    | GUINESS      |\
+| NICK        | WAHLBERG     |\
+| ED          | CHASE        |\
+| JENNIFER    | DAVIS        |\
+| JOHNNY      | LOLLOBRIGIDA |\
+| BETTE       | NICHOLSON    |\
+| GRACE       | MOSTEL       |\
+| MATTHEW     | JOHANSSON    |\
+| JOE         | SWANK        |\
+| CHRISTIAN   | GABLE        |\
+| ZERO        | CAGE         |\
+| KARL        | BERRY        |\
+| UMA         | WOOD         |\
+| VIVIEN      | BERGEN       |\
+| CUBA        | OLIVIER      |\
+| FRED        | COSTNER      |\
+| HELEN       | VOIGHT       |\
+| DAN         | TORN         |\
+| BOB         | FAWCETT      |\
+| LUCILLE     | TRACY        |\
+| KIRSTEN     | PALTROW      |\
+| ELVIS       | MARX         |\
+| SANDRA      | KILMER       |\
+| CAMERON     | STREEP       |\
+| KEVIN       | BLOOM        |\
+| RIP         | CRAWFORD     |\
+| JULIA       | MCQUEEN      |\
+| WOODY       | HOFFMAN      |\
+| ALEC        | WAYNE        |\
+| SANDRA      | PECK         |\
+| SISSY       | SOBIESKI     |\
+| TIM         | HACKMAN      |\
+| MILLA       | PECK         |\
+| AUDREY      | OLIVIER      |\
+| JUDY        | DEAN         |\
+| BURT        | DUKAKIS      |\
+| VAL         | BOLGER       |\
+| TOM         | MCKELLEN     |\
+| GOLDIE      | BRODY        |\
+| JOHNNY      | CAGE         |\
+| JODIE       | DEGENERES    |\
+| TOM         | MIRANDA      |\
+| KIRK        | JOVOVICH     |\
+| NICK        | STALLONE     |\
+| REESE       | KILMER       |\
+| PARKER      | GOLDBERG     |\
+| JULIA       | BARRYMORE    |\
+| FRANCES     | DAY-LEWIS    |\
+| ANNE        | CRONYN       |\
+| NATALIE     | HOPKINS      |\
+| GARY        | PHOENIX      |\
+| CARMEN      | HUNT         |\
+| MENA        | TEMPLE       |\
+| PENELOPE    | PINKETT      |\
+| FAY         | KILMER       |\
+| DAN         | HARRIS       |\
+| JUDE        | CRUISE       |\
+| CHRISTIAN   | AKROYD       |\
+| DUSTIN      | TAUTOU       |\
+| HENRY       | BERRY        |\
+| CHRISTIAN   | NEESON       |\
+| JAYNE       | NEESON       |\
+| CAMERON     | WRAY         |\
+| RAY         | JOHANSSON    |\
+| ANGELA      | HUDSON       |\
+| MARY        | TANDY        |\
+| JESSICA     | BAILEY       |\
+| RIP         | WINSLET      |\
+| KENNETH     | PALTROW      |\
+| MICHELLE    | MCCONAUGHEY  |\
+| ADAM        | GRANT        |\
+| SEAN        | WILLIAMS     |\
+| GARY        | PENN         |\
+| MILLA       | KEITEL       |\
+| BURT        | POSEY        |\
+| ANGELINA    | ASTAIRE      |\
+| CARY        | MCCONAUGHEY  |\
+| GROUCHO     | SINATRA      |\
+| MAE         | HOFFMAN      |\
+| RALPH       | CRUZ         |\
+| SCARLETT    | DAMON        |\
+| WOODY       | JOLIE        |\
+| BEN         | WILLIS       |\
+| JAMES       | PITT         |\
+| MINNIE      | ZELLWEGER    |\
+| GREG        | CHAPLIN      |\
+| SPENCER     | PECK         |\
+| KENNETH     | PESCI        |\
+| CHARLIZE    | DENCH        |\
+| SEAN        | GUINESS      |\
+| CHRISTOPHER | BERRY        |\
+| KIRSTEN     | AKROYD       |\
+| ELLEN       | PRESLEY      |\
+| KENNETH     | TORN         |\
+| DARYL       | WAHLBERG     |\
+| GENE        | WILLIS       |\
+| MEG         | HAWKE        |\
+| CHRIS       | BRIDGES      |\
+| JIM         | MOSTEL       |\
+| SPENCER     | DEPP         |\
+| SUSAN       | DAVIS        |\
+| WALTER      | TORN         |\
+| MATTHEW     | LEIGH        |\
+| PENELOPE    | CRONYN       |\
+| SIDNEY      | CROWE        |\
+| GROUCHO     | DUNST        |\
+| GINA        | DEGENERES    |\
+| WARREN      | NOLTE        |\
+| SYLVESTER   | DERN         |\
+| CAMERON     | ZELLWEGER    |\
+| RUSSELL     | BACALL       |\
+| MORGAN      | HOPKINS      |\
+| MORGAN      | MCDORMAND    |\
+| HARRISON    | BALE         |\
+| DAN         | STREEP       |\
+| RENEE       | TRACY        |\
+| CUBA        | ALLEN        |\
+| WARREN      | JACKMAN      |\
+| PENELOPE    | MONROE       |\
+| LIZA        | BERGMAN      |\
+| SALMA       | NOLTE        |\
+| JULIANNE    | DENCH        |\
+| SCARLETT    | BENING       |\
+| ALBERT      | NOLTE        |\
+| FRANCES     | TOMEI        |\
+| KEVIN       | GARLAND      |\
+| CATE        | MCQUEEN      |\
+| DARYL       | CRAWFORD     |\
+| GRETA       | KEITEL       |\
+| JANE        | JACKMAN      |\
+| ADAM        | HOPPER       |\
+| RICHARD     | PENN         |\
+| GENE        | HOPKINS      |\
+| RITA        | REYNOLDS     |\
+| ED          | MANSFIELD    |\
+| MORGAN      | WILLIAMS     |\
+| LUCILLE     | DEE          |\
+| EWAN        | GOODING      |\
+| WHOOPI      | HURT         |\
+| CATE        | HARRIS       |\
+| JADA        | RYDER        |\
+| RIVER       | DEAN         |\
+| ANGELA      | WITHERSPOON  |\
+| KIM         | ALLEN        |\
+| ALBERT      | JOHANSSON    |\
+| FAY         | WINSLET      |\
+| EMILY       | DEE          |\
+| RUSSELL     | TEMPLE       |\
+| JAYNE       | NOLTE        |\
+| GEOFFREY    | HESTON       |\
+| BEN         | HARRIS       |\
+| MINNIE      | KILMER       |\
+| MERYL       | GIBSON       |\
+| IAN         | TANDY        |\
+| FAY         | WOOD         |\
+| GRETA       | MALDEN       |\
+| VIVIEN      | BASINGER     |\
+| LAURA       | BRODY        |\
+| CHRIS       | DEPP         |\
+| HARVEY      | HOPE         |\
+| OPRAH       | KILMER       |\
+| CHRISTOPHER | WEST         |\
+| HUMPHREY    | WILLIS       |\
+| AL          | GARLAND      |\
+| NICK        | DEGENERES    |\
+| LAURENCE    | BULLOCK      |\
+| WILL        | WILSON       |\
+| KENNETH     | HOFFMAN      |\
+| MENA        | HOPPER       |\
+| OLYMPIA     | PFEIFFER     |\
+| GROUCHO     | WILLIAMS     |\
+| ALAN        | DREYFUSS     |\
+| MICHAEL     | BENING       |\
+| WILLIAM     | HACKMAN      |\
+| JON         | CHASE        |\
+| GENE        | MCKELLEN     |\
+| LISA        | MONROE       |\
+| ED          | GUINESS      |\
+| JEFF        | SILVERSTONE  |\
+| MATTHEW     | CARREY       |\
+| DEBBIE      | AKROYD       |\
+| RUSSELL     | CLOSE        |\
+| HUMPHREY    | GARLAND      |\
+| MICHAEL     | BOLGER       |\
+| JULIA       | ZELLWEGER    |\
+| RENEE       | BALL         |\
+| ROCK        | DUKAKIS      |\
+| CUBA        | BIRCH        |\
+| AUDREY      | BAILEY       |\
+| GREGORY     | GOODING      |\
+| JOHN        | SUVARI       |\
+| BURT        | TEMPLE       |\
+| MERYL       | ALLEN        |\
+| JAYNE       | SILVERSTONE  |\
+| BELA        | WALKEN       |\
+| REESE       | WEST         |\
+| MARY        | KEITEL       |\
+| JULIA       | FAWCETT      |\
+| THORA       | TEMPLE       |\
+| MARY        | SMITH        |\
+| PATRICIA    | JOHNSON      |\
+| LINDA       | WILLIAMS     |\
+| BARBARA     | JONES        |\
+| ELIZABETH   | BROWN        |\
+| MARIA       | MILLER       |\
+| SUSAN       | WILSON       |\
+| MARGARET    | MOORE        |\
+| DOROTHY     | TAYLOR       |\
+| LISA        | ANDERSON     |\
+| NANCY       | THOMAS       |\
+| KAREN       | JACKSON      |\
+| BETTY       | WHITE        |\
+| HELEN       | HARRIS       |\
+| SANDRA      | MARTIN       |\
+| DONNA       | THOMPSON     |\
+| CAROL       | GARCIA       |\
+| RUTH        | MARTINEZ     |\
+| SHARON      | ROBINSON     |\
+| MICHELLE    | CLARK        |\
+| LAURA       | RODRIGUEZ    |\
+| SARAH       | LEWIS        |\
+| KIMBERLY    | LEE          |\
+| DEBORAH     | WALKER       |\
+| JESSICA     | HALL         |\
+| SHIRLEY     | ALLEN        |\
+| CYNTHIA     | YOUNG        |\
+| ANGELA      | HERNANDEZ    |\
+| MELISSA     | KING         |\
+| BRENDA      | WRIGHT       |\
+| AMY         | LOPEZ        |\
+| ANNA        | HILL         |\
+| REBECCA     | SCOTT        |\
+| VIRGINIA    | GREEN        |\
+| KATHLEEN    | ADAMS        |\
+| PAMELA      | BAKER        |\
+| MARTHA      | GONZALEZ     |\
+| DEBRA       | NELSON       |\
+| AMANDA      | CARTER       |\
+| STEPHANIE   | MITCHELL     |\
+| CAROLYN     | PEREZ        |\
+| CHRISTINE   | ROBERTS      |\
+| MARIE       | TURNER       |\
+| JANET       | PHILLIPS     |\
+| CATHERINE   | CAMPBELL     |\
+| FRANCES     | PARKER       |\
+| ANN         | EVANS        |\
+| JOYCE       | EDWARDS      |\
+| DIANE       | COLLINS      |\
+| ALICE       | STEWART      |\
+| JULIE       | SANCHEZ      |\
+| HEATHER     | MORRIS       |\
+| TERESA      | ROGERS       |\
+| DORIS       | REED         |\
+| GLORIA      | COOK         |\
+| EVELYN      | MORGAN       |\
+| JEAN        | BELL         |\
+| CHERYL      | MURPHY       |\
+| MILDRED     | BAILEY       |\
+| KATHERINE   | RIVERA       |\
+| JOAN        | COOPER       |\
+| ASHLEY      | RICHARDSON   |\
+| JUDITH      | COX          |\
+| ROSE        | HOWARD       |\
+| JANICE      | WARD         |\
+| KELLY       | TORRES       |\
+| NICOLE      | PETERSON     |\
+| JUDY        | GRAY         |\
+| CHRISTINA   | RAMIREZ      |\
+| KATHY       | JAMES        |\
+| THERESA     | WATSON       |\
+| BEVERLY     | BROOKS       |\
+| DENISE      | KELLY        |\
+| TAMMY       | SANDERS      |\
+| IRENE       | PRICE        |\
+| JANE        | BENNETT      |\
+| LORI        | WOOD         |\
+| RACHEL      | BARNES       |\
+| MARILYN     | ROSS         |\
+| ANDREA      | HENDERSON    |\
+| KATHRYN     | COLEMAN      |\
+| LOUISE      | JENKINS      |\
+| SARA        | PERRY        |\
+| ANNE        | POWELL       |\
+| JACQUELINE  | LONG         |\
+| WANDA       | PATTERSON    |\
+| BONNIE      | HUGHES       |\
+| JULIA       | FLORES       |\
+| RUBY        | WASHINGTON   |\
+| LOIS        | BUTLER       |\
+| TINA        | SIMMONS      |\
+| PHYLLIS     | FOSTER       |\
+| NORMA       | GONZALES     |\
+| PAULA       | BRYANT       |\
+| DIANA       | ALEXANDER    |\
+| ANNIE       | RUSSELL      |\
+| LILLIAN     | GRIFFIN      |\
+| EMILY       | DIAZ         |\
+| ROBIN       | HAYES        |\
+| PEGGY       | MYERS        |\
+| CRYSTAL     | FORD         |\
+| GLADYS      | HAMILTON     |\
+| RITA        | GRAHAM       |\
+| DAWN        | SULLIVAN     |\
+| CONNIE      | WALLACE      |\
+| FLORENCE    | WOODS        |\
+| TRACY       | COLE         |\
+| EDNA        | WEST         |\
+| TIFFANY     | JORDAN       |\
+| CARMEN      | OWENS        |\
+| ROSA        | REYNOLDS     |\
+| CINDY       | FISHER       |\
+| GRACE       | ELLIS        |\
+| WENDY       | HARRISON     |\
+| VICTORIA    | GIBSON       |\
+| EDITH       | MCDONALD     |\
+| KIM         | CRUZ         |\
+| SHERRY      | MARSHALL     |\
+| SYLVIA      | ORTIZ        |\
+| JOSEPHINE   | GOMEZ        |\
+| THELMA      | MURRAY       |\
+| SHANNON     | FREEMAN      |\
+| SHEILA      | WELLS        |\
+| ETHEL       | WEBB         |\
+| ELLEN       | SIMPSON      |\
+| ELAINE      | STEVENS      |\
+| MARJORIE    | TUCKER       |\
+| CARRIE      | PORTER       |\
+| CHARLOTTE   | HUNTER       |\
+| MONICA      | HICKS        |\
+| ESTHER      | CRAWFORD     |\
+| PAULINE     | HENRY        |\
+| EMMA        | BOYD         |\
+| JUANITA     | MASON        |\
+| ANITA       | MORALES      |\
+| RHONDA      | KENNEDY      |\
+| HAZEL       | WARREN       |\
+| AMBER       | DIXON        |\
+| EVA         | RAMOS        |\
+| DEBBIE      | REYES        |\
+| APRIL       | BURNS        |\
+| LESLIE      | GORDON       |\
+| CLARA       | SHAW         |\
+| LUCILLE     | HOLMES       |\
+| JAMIE       | RICE         |\
+| JOANNE      | ROBERTSON    |\
+| ELEANOR     | HUNT         |\
+| VALERIE     | BLACK        |\
+| DANIELLE    | DANIELS      |\
+| MEGAN       | PALMER       |\
+| ALICIA      | MILLS        |\
+| SUZANNE     | NICHOLS      |\
+| MICHELE     | GRANT        |\
+| GAIL        | KNIGHT       |\
+| BERTHA      | FERGUSON     |\
+| DARLENE     | ROSE         |\
+| VERONICA    | STONE        |\
+| JILL        | HAWKINS      |\
+| ERIN        | DUNN         |\
+| GERALDINE   | PERKINS      |\
+| LAUREN      | HUDSON       |\
+| CATHY       | SPENCER      |\
+| JOANN       | GARDNER      |\
+| LORRAINE    | STEPHENS     |\
+| LYNN        | PAYNE        |\
+| SALLY       | PIERCE       |\
+| REGINA      | BERRY        |\
+| ERICA       | MATTHEWS     |\
+| BEATRICE    | ARNOLD       |\
+| DOLORES     | WAGNER       |\
+| BERNICE     | WILLIS       |\
+| AUDREY      | RAY          |\
+| YVONNE      | WATKINS      |\
+| ANNETTE     | OLSON        |\
+| JUNE        | CARROLL      |\
+| SAMANTHA    | DUNCAN       |\
+| MARION      | SNYDER       |\
+| DANA        | HART         |\
+| STACY       | CUNNINGHAM   |\
+| ANA         | BRADLEY      |\
+| RENEE       | LANE         |\
+| IDA         | ANDREWS      |\
+| VIVIAN      | RUIZ         |\
+| ROBERTA     | HARPER       |\
+| HOLLY       | FOX          |\
+| BRITTANY    | RILEY        |\
+| MELANIE     | ARMSTRONG    |\
+| LORETTA     | CARPENTER    |\
+| YOLANDA     | WEAVER       |\
+| JEANETTE    | GREENE       |\
+| LAURIE      | LAWRENCE     |\
+| KATIE       | ELLIOTT      |\
+| KRISTEN     | CHAVEZ       |\
+| VANESSA     | SIMS         |\
+| ALMA        | AUSTIN       |\
+| SUE         | PETERS       |\
+| ELSIE       | KELLEY       |\
+| BETH        | FRANKLIN     |\
+| JEANNE      | LAWSON       |\
+| VICKI       | FIELDS       |\
+| CARLA       | GUTIERREZ    |\
+| TARA        | RYAN         |\
+| ROSEMARY    | SCHMIDT      |\
+| EILEEN      | CARR         |\
+| TERRI       | VASQUEZ      |\
+| GERTRUDE    | CASTILLO     |\
+| LUCY        | WHEELER      |\
+| TONYA       | CHAPMAN      |\
+| ELLA        | OLIVER       |\
+| STACEY      | MONTGOMERY   |\
+| WILMA       | RICHARDS     |\
+| GINA        | WILLIAMSON   |\
+| KRISTIN     | JOHNSTON     |\
+| JESSIE      | BANKS        |\
+| NATALIE     | MEYER        |\
+| AGNES       | BISHOP       |\
+| VERA        | MCCOY        |\
+| WILLIE      | HOWELL       |\
+| CHARLENE    | ALVAREZ      |\
+| BESSIE      | MORRISON     |\
+| DELORES     | HANSEN       |\
+| MELINDA     | FERNANDEZ    |\
+| PEARL       | GARZA        |\
+| ARLENE      | HARVEY       |\
+| MAUREEN     | LITTLE       |\
+| COLLEEN     | BURTON       |\
+| ALLISON     | STANLEY      |\
+| TAMARA      | NGUYEN       |\
+| JOY         | GEORGE       |\
+| GEORGIA     | JACOBS       |\
+| CONSTANCE   | REID         |\
+| LILLIE      | KIM          |\
+| CLAUDIA     | FULLER       |\
+| JACKIE      | LYNCH        |\
+| MARCIA      | DEAN         |\
+| TANYA       | GILBERT      |\
+| NELLIE      | GARRETT      |\
+| MINNIE      | ROMERO       |\
+| MARLENE     | WELCH        |\
+| HEIDI       | LARSON       |\
+| GLENDA      | FRAZIER      |\
+| LYDIA       | BURKE        |\
+| VIOLA       | HANSON       |\
+| COURTNEY    | DAY          |\
+| MARIAN      | MENDOZA      |\
+| STELLA      | MORENO       |\
+| CAROLINE    | BOWMAN       |\
+| DORA        | MEDINA       |\
+| JO          | FOWLER       |\
+| VICKIE      | BREWER       |\
+| MATTIE      | HOFFMAN      |\
+| TERRY       | CARLSON      |\
+| MAXINE      | SILVA        |\
+| IRMA        | PEARSON      |\
+| MABEL       | HOLLAND      |\
+| MARSHA      | DOUGLAS      |\
+| MYRTLE      | FLEMING      |\
+| LENA        | JENSEN       |\
+| CHRISTY     | VARGAS       |\
+| DEANNA      | BYRD         |\
+| PATSY       | DAVIDSON     |\
+| HILDA       | HOPKINS      |\
+| GWENDOLYN   | MAY          |\
+| JENNIE      | TERRY        |\
+| NORA        | HERRERA      |\
+| MARGIE      | WADE         |\
+| NINA        | SOTO         |\
+| CASSANDRA   | WALTERS      |\
+| LEAH        | CURTIS       |\
+| PENNY       | NEAL         |\
+| KAY         | CALDWELL     |\
+| PRISCILLA   | LOWE         |\
+| NAOMI       | JENNINGS     |\
+| CAROLE      | BARNETT      |\
+| BRANDY      | GRAVES       |\
+| OLGA        | JIMENEZ      |\
+| BILLIE      | HORTON       |\
+| DIANNE      | SHELTON      |\
+| TRACEY      | BARRETT      |\
+| LEONA       | OBRIEN       |\
+| JENNY       | CASTRO       |\
+| FELICIA     | SUTTON       |\
+| SONIA       | GREGORY      |\
+| MIRIAM      | MCKINNEY     |\
+| VELMA       | LUCAS        |\
+| BECKY       | MILES        |\
+| BOBBIE      | CRAIG        |\
+| VIOLET      | RODRIQUEZ    |\
+| KRISTINA    | CHAMBERS     |\
+| TONI        | HOLT         |\
+| MISTY       | LAMBERT      |\
+| MAE         | FLETCHER     |\
+| SHELLY      | WATTS        |\
+| DAISY       | BATES        |\
+| RAMONA      | HALE         |\
+| SHERRI      | RHODES       |\
+| ERIKA       | PENA         |\
+| JAMES       | GANNON       |\
+| JOHN        | FARNSWORTH   |\
+| ROBERT      | BAUGHMAN     |\
+| MICHAEL     | SILVERMAN    |\
+| WILLIAM     | SATTERFIELD  |\
+| DAVID       | ROYAL        |\
+| RICHARD     | MCCRARY      |\
+| CHARLES     | KOWALSKI     |\
+| JOSEPH      | JOY          |\
+| THOMAS      | GRIGSBY      |\
+| CHRISTOPHER | GRECO        |\
+| DANIEL      | CABRAL       |\
+| PAUL        | TROUT        |\
+| MARK        | RINEHART     |\
+| DONALD      | MAHON        |\
+| GEORGE      | LINTON       |\
+| KENNETH     | GOODEN       |\
+| STEVEN      | CURLEY       |\
+| EDWARD      | BAUGH        |\
+| BRIAN       | WYMAN        |\
+| RONALD      | WEINER       |\
+| ANTHONY     | SCHWAB       |\
+| KEVIN       | SCHULER      |\
+| JASON       | MORRISSEY    |\
+| MATTHEW     | MAHAN        |\
+| GARY        | COY          |\
+| TIMOTHY     | BUNN         |\
+| JOSE        | ANDREW       |\
+| LARRY       | THRASHER     |\
+| JEFFREY     | SPEAR        |\
+| FRANK       | WAGGONER     |\
+| SCOTT       | SHELLEY      |\
+| ERIC        | ROBERT       |\
+| STEPHEN     | QUALLS       |\
+| ANDREW      | PURDY        |\
+| RAYMOND     | MCWHORTER    |\
+| GREGORY     | MAULDIN      |\
+| JOSHUA      | MARK         |\
+| JERRY       | JORDON       |\
+| DENNIS      | GILMAN       |\
+| WALTER      | PERRYMAN     |\
+| PATRICK     | NEWSOM       |\
+| PETER       | MENARD       |\
+| HAROLD      | MARTINO      |\
+| DOUGLAS     | GRAF         |\
+| HENRY       | BILLINGSLEY  |\
+| CARL        | ARTIS        |\
+| ARTHUR      | SIMPKINS     |\
+| RYAN        | SALISBURY    |\
+| ROGER       | QUINTANILLA  |\
+| JOE         | GILLILAND    |\
+| JUAN        | FRALEY       |\
+| JACK        | FOUST        |\
+| ALBERT      | CROUSE       |\
+| JONATHAN    | SCARBOROUGH  |\
+| JUSTIN      | NGO          |\
+| TERRY       | GRISSOM      |\
+| GERALD      | FULTZ        |\
+| KEITH       | RICO         |\
+| SAMUEL      | MARLOW       |\
+| WILLIE      | MARKHAM      |\
+| RALPH       | MADRIGAL     |\
+| LAWRENCE    | LAWTON       |\
+| NICHOLAS    | BARFIELD     |\
+| ROY         | WHITING      |\
+| BENJAMIN    | VARNEY       |\
+| BRUCE       | SCHWARZ      |\
+| BRANDON     | HUEY         |\
+| ADAM        | GOOCH        |\
+| HARRY       | ARCE         |\
+| FRED        | WHEAT        |\
+| WAYNE       | TRUONG       |\
+| BILLY       | POULIN       |\
+| STEVE       | MACKENZIE    |\
+| LOUIS       | LEONE        |\
+| JEREMY      | HURTADO      |\
+| AARON       | SELBY        |\
+| RANDY       | GAITHER      |\
+| HOWARD      | FORTNER      |\
+| EUGENE      | CULPEPPER    |\
+| CARLOS      | COUGHLIN     |\
+| RUSSELL     | BRINSON      |\
+| BOBBY       | BOUDREAU     |\
+| VICTOR      | BARKLEY      |\
+| MARTIN      | BALES        |\
+| ERNEST      | STEPP        |\
+| PHILLIP     | HOLM         |\
+| TODD        | TAN          |\
+| JESSE       | SCHILLING    |\
+| CRAIG       | MORRELL      |\
+| ALAN        | KAHN         |\
+| SHAWN       | HEATON       |\
+| CLARENCE    | GAMEZ        |\
+| SEAN        | DOUGLASS     |\
+| PHILIP      | CAUSEY       |\
+| CHRIS       | BROTHERS     |\
+| JOHNNY      | TURPIN       |\
+| EARL        | SHANKS       |\
+| JIMMY       | SCHRADER     |\
+| ANTONIO     | MEEK         |\
+| DANNY       | ISOM         |\
+| BRYAN       | HARDISON     |\
+| TONY        | CARRANZA     |\
+| LUIS        | YANEZ        |\
+| MIKE        | WAY          |\
+| STANLEY     | SCROGGINS    |\
+| LEONARD     | SCHOFIELD    |\
+| NATHAN      | RUNYON       |\
+| DALE        | RATCLIFF     |\
+| MANUEL      | MURRELL      |\
+| RODNEY      | MOELLER      |\
+| CURTIS      | IRBY         |\
+| NORMAN      | CURRIER      |\
+| ALLEN       | BUTTERFIELD  |\
+| MARVIN      | YEE          |\
+| VINCENT     | RALSTON      |\
+| GLENN       | PULLEN       |\
+| JEFFERY     | PINSON       |\
+| TRAVIS      | ESTEP        |\
+| JEFF        | EAST         |\
+| CHAD        | CARBONE      |\
+| JACOB       | LANCE        |\
+| LEE         | HAWKS        |\
+| MELVIN      | ELLINGTON    |\
+| ALFRED      | CASILLAS     |\
+| KYLE        | SPURLOCK     |\
+| FRANCIS     | SIKES        |\
+| BRADLEY     | MOTLEY       |\
+| JESUS       | MCCARTNEY    |\
+| HERBERT     | KRUGER       |\
+| FREDERICK   | ISBELL       |\
+| RAY         | HOULE        |\
+| JOEL        | FRANCISCO    |\
+| EDWIN       | BURK         |\
+| DON         | BONE         |\
+| EDDIE       | TOMLIN       |\
+| RICKY       | SHELBY       |\
+| TROY        | QUIGLEY      |\
+| RANDALL     | NEUMANN      |\
+| BARRY       | LOVELACE     |\
+| ALEXANDER   | FENNELL      |\
+| BERNARD     | COLBY        |\
+| MARIO       | CHEATHAM     |\
+| LEROY       | BUSTAMANTE   |\
+| FRANCISCO   | SKIDMORE     |\
+| MARCUS      | HIDALGO      |\
+| MICHEAL     | FORMAN       |\
+| THEODORE    | CULP         |\
+| CLIFFORD    | BOWENS       |\
+| MIGUEL      | BETANCOURT   |\
+| OSCAR       | AQUINO       |\
+| JAY         | ROBB         |\
+| JIM         | REA          |\
+| TOM         | MILNER       |\
+| CALVIN      | MARTEL       |\
+| ALEX        | GRESHAM      |\
+| JON         | WILES        |\
+| RONNIE      | RICKETTS     |\
+| BILL        | GAVIN        |\
+| LLOYD       | DOWD         |\
+| TOMMY       | COLLAZO      |\
+| LEON        | BOSTIC       |\
+| DEREK       | BLAKELY      |\
+| WARREN      | SHERROD      |\
+| DARRELL     | POWER        |\
+| JEROME      | KENYON       |\
+| FLOYD       | GANDY        |\
+| LEO         | EBERT        |\
+| ALVIN       | DELOACH      |\
+| TIM         | CARY         |\
+| WESLEY      | BULL         |\
+| GORDON      | ALLARD       |\
+| DEAN        | SAUER        |\
+| GREG        | ROBINS       |\
+| JORGE       | OLIVARES     |\
+| DUSTIN      | GILLETTE     |\
+| PEDRO       | CHESTNUT     |\
+| DERRICK     | BOURQUE      |\
+| DAN         | PAINE        |\
+| LEWIS       | LYMAN        |\
+| ZACHARY     | HITE         |\
+| COREY       | HAUSER       |\
+| HERMAN      | DEVORE       |\
+| MAURICE     | CRAWLEY      |\
+| VERNON      | CHAPA        |\
+| ROBERTO     | VU           |\
+| CLYDE       | TOBIAS       |\
+| GLEN        | TALBERT      |\
+| HECTOR      | POINDEXTER   |\
+| SHANE       | MILLARD      |\
+| RICARDO     | MEADOR       |\
+| SAM         | MCDUFFIE     |\
+| RICK        | MATTOX       |\
+| LESTER      | KRAUS        |\
+| BRENT       | HARKINS      |\
+| RAMON       | CHOATE       |\
+| CHARLIE     | BESS         |\
+| TYLER       | WREN         |\
+| GILBERT     | SLEDGE       |\
+| GENE        | SANBORN      |\
+| MARC        | OUTLAW       |\
+| REGINALD    | KINDER       |\
+| RUBEN       | GEARY        |\
+| BRETT       | CORNWELL     |\
+| ANGEL       | BARCLAY      |\
+| NATHANIEL   | ADAM         |\
+| RAFAEL      | ABNEY        |\
+| LESLIE      | SEWARD       |\
+| EDGAR       | RHOADS       |\
+| MILTON      | HOWLAND      |\
+| RAUL        | FORTIER      |\
+| BEN         | EASTER       |\
+| CHESTER     | BENNER       |\
+| CECIL       | VINES        |\
+| DUANE       | TUBBS        |\
+| FRANKLIN    | TROUTMAN     |\
+| ANDRE       | RAPP         |\
+| ELMER       | NOE          |\
+| BRAD        | MCCURDY      |\
+| GABRIEL     | HARDER       |\
+| RON         | DELUCA       |\
+| MITCHELL    | WESTMORELAND |\
+| ROLAND      | SOUTH        |\
+| ARNOLD      | HAVENS       |\
+| HARVEY      | GUAJARDO     |\
+| JARED       | ELY          |\
+| ADRIAN      | CLARY        |\
+| KARL        | SEAL         |\
+| CORY        | MEEHAN       |\
+| CLAUDE      | HERZOG       |\
+| ERIK        | GUILLEN      |\
+| DARRYL      | ASHCRAFT     |\
+| JAMIE       | WAUGH        |\
+| NEIL        | RENNER       |\
+| JESSIE      | MILAM        |\
+| CHRISTIAN   | JUNG         |\
+| JAVIER      | ELROD        |\
+| FERNANDO    | CHURCHILL    |\
+| CLINTON     | BUFORD       |\
+| TED         | BREAUX       |\
+| MATHEW      | BOLIN        |\
+| TYRONE      | ASHER        |\
+| DARREN      | WINDHAM      |\
+| LONNIE      | TIRADO       |\
+| LANCE       | PEMBERTON    |\
+| CODY        | NOLEN        |\
+| JULIO       | NOLAND       |\
+| KELLY       | KNOTT        |\
+| KURT        | EMMONS       |\
+| ALLAN       | CORNISH      |\
+| NELSON      | CHRISTENSON  |\
+| GUY         | BROWNLEE     |\
+| CLAYTON     | BARBEE       |\
+| HUGH        | WALDROP      |\
+| MAX         | PITT         |\
+| DWAYNE      | OLVERA       |\
+| DWIGHT      | LOMBARDI     |\
+| ARMANDO     | GRUBER       |\
+| FELIX       | GAFFNEY      |\
+| JIMMIE      | EGGLESTON    |\
+| EVERETT     | BANDA        |\
+| JORDAN      | ARCHULETA    |\
+| IAN         | STILL        |\
+| WALLACE     | SLONE        |\
+| KEN         | PREWITT      |\
+| BOB         | PFEIFFER     |\
+| JAIME       | NETTLES      |\
+| CASEY       | MENA         |\
+| ALFREDO     | MCADAMS      |\
+| ALBERTO     | HENNING      |\
+| DAVE        | GARDINER     |\
+| IVAN        | CROMWELL     |\
+| JOHNNIE     | CHISHOLM     |\
+| SIDNEY      | BURLESON     |\
+| BYRON       | BOX          |\
+| JULIAN      | VEST         |\
+| ISAAC       | OGLESBY      |\
+| MORRIS      | MCCARTER     |\
+| CLIFTON     | MALCOLM      |\
+| WILLARD     | LUMPKIN      |\
+| DARYL       | LARUE        |\
+| ROSS        | GREY         |\
+| VIRGIL      | WOFFORD      |\
+| ANDY        | VANHORN      |\
+| MARSHALL    | THORN        |\
+| SALVADOR    | TEEL         |\
+| PERRY       | SWAFFORD     |\
+| KIRK        | STCLAIR      |\
+| SERGIO      | STANFIELD    |\
+| MARION      | OCAMPO       |\
+| TRACY       | HERRMANN     |\
+| SETH        | HANNON       |\
+| KENT        | ARSENAULT    |\
+| TERRANCE    | ROUSH        |\
+| RENE        | MCALISTER    |\
+| EDUARDO     | HIATT        |\
+| TERRENCE    | GUNDERSON    |\
+| ENRIQUE     | FORSYTHE     |\
+| FREDDIE     | DUGGAN       |\
+| WADE        | DELVALLE     |\
+| AUSTIN      | CINTRON      |\
++-------------+--------------+\
+797 rows in set (0.0165 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  sakila \cb5  SQL \cf2 \cb2 > \cb1 use tbd_u2;\
+Default schema set to `tbd_u2`.\
+Fetching global names, object names from `tbd_u2` for auto-completion... Press ^C to stop.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa;\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | A     |\
+|  2 | B     |\
+|  3 | C     |\
+|  4 | D     |\
++----+-------+\
+4 rows in set (0.0007 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablab;\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | X     |\
+|  2 | Y     |\
+|  3 | Z     |\
+|  4 | A     |\
+|  5 | B     |\
++----+-------+\
+5 rows in set (0.0007 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa\
+\cb2                               -> \cb1 where valor in(select * from tablab);\
+ERROR: 1241 (21000): Operand should contain 1 column(s)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa where valor in (select * from tablab);\
+ERROR: 1241 (21000): Operand should contain 1 column(s)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  loca\cf2 \cb1 ^C\cf6 \cb7 ost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaA where valor in (select * from tablaB);\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa\
+\cb2                               -> \cb1 where valor int (select valor from tabla);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int (select valor from tabla)' at line 2\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa where valor in (select valor from tabla);\
+ERROR: 1146 (42S02): Table 'tbd_u2.tabla' doesn't exist\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa where valor in (select valor from tablab);\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | A     |\
+|  2 | B     |\
++----+-------+\
+2 rows in set (0.0034 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa;\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | A     |\
+|  2 | B     |\
+|  3 | C     |\
+|  4 | D     |\
++----+-------+\
+4 rows in set (0.0007 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablab;\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | X     |\
+|  2 | Y     |\
+|  3 | Z     |\
+|  4 | A     |\
+|  5 | B     |\
++----+-------+\
+5 rows in set (0.0007 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa\
+\cb2                               -> \cb1 where valor not in (select valor from tablab);\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  3 | C     |\
+|  4 | D     |\
++----+-------+\
+2 rows in set (0.0009 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablab where valor not in (select valor from tablaa);\
++----+-------+\
+| id | valor |\
++----+-------+\
+|  1 | X     |\
+|  2 | Y     |\
+|  3 | Z     |\
++----+-------+\
+3 rows in set (0.0010 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from tablaa, tablab;\
++----+-------+----+-------+\
+| id | valor | id | valor |\
++----+-------+----+-------+\
+|  4 | D     |  1 | X     |\
+|  3 | C     |  1 | X     |\
+|  2 | B     |  1 | X     |\
+|  1 | A     |  1 | X     |\
+|  4 | D     |  2 | Y     |\
+|  3 | C     |  2 | Y     |\
+|  2 | B     |  2 | Y     |\
+|  1 | A     |  2 | Y     |\
+|  4 | D     |  3 | Z     |\
+|  3 | C     |  3 | Z     |\
+|  2 | B     |  3 | Z     |\
+|  1 | A     |  3 | Z     |\
+|  4 | D     |  4 | A     |\
+|  3 | C     |  4 | A     |\
+|  2 | B     |  4 | A     |\
+|  1 | A     |  4 | A     |\
+|  4 | D     |  5 | B     |\
+|  3 | C     |  5 | B     |\
+|  2 | B     |  5 | B     |\
+|  1 | A     |  5 | B     |\
++----+-------+----+-------+\
+20 rows in set (0.0010 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > }
