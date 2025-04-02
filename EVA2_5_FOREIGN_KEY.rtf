@@ -1,0 +1,487 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red10\green77\blue76;\red221\green221\blue221;
+\red203\green74\blue5;\red223\green223\blue223;\red44\green44\blue44;\red89\green89\blue89;}
+{\*\expandedcolortbl;;\csgray\c0;\cspthree\c15308\c36657\c36949;\cspthree\c89412\c89412\c89412;
+\cspthree\c78529\c40049\c15121;\cspthree\c90000\c90000\c90000;\cspthree\c22745\c22745\c22745;\cspthree\c42353\c42353\c42353;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 Last login: Wed Apr  2 10:45:41 on ttys000\
+xaia@MacBook-Air-de-Angel ~ % MYSQLsh\
+MySQL Shell 9.2.0\
+\
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.\
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.\
+Other names may be trademarks of their respective owners.\
+\
+Type '\\help' or '\\?' for help; '\\quit' to exit.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb5  SQL \cf2 \cb2 > \cb1 \\connect --mc root@localhost\
+Creating a Classic session to 'root@localhost'\
+Fetching global names for auto-completion... Press ^C to stop.\
+Your MySQL connection id is 12\
+Server version: 9.1.0 MySQL Community Server - GPL\
+No default schema selected; type \\use <schema> to set one.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb5  SQL \cf2 \cb2 > \cb1 use tbd_u2\
+Default schema set to `tbd_u2`.\
+Fetching global names, object names from `tbd_u2` for auto-completion... Press ^C to stop.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table customer(\
+\cb2                               -> \cb1 cust_code varchar(10) primary key,\
+\cb2                               -> \cb1 cust_name varchar(255) not null,\
+\cb2                               -> \cb1 );\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table customer( cust_code varchar(10) primary key, cust_name varchar(255) not null);\
+Query OK, 0 rows affected (0.0189 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table items(\
+\cb2                               -> \cb1 item_number varchar(20) primary key,\
+\cb2                               -> \cb1 item_name varchar(255) not null);\
+Query OK, 0 rows affected (0.0096 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table sales_orders (\
+\cb2                               -> \cb1 so_number int primary key);\
+Query OK, 0 rows affected (0.0078 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table order_details (\
+\cb2                               -> \cb1 order_id int auto_increment primary key,\
+\cb2                               -> \cb1 so_number int,\
+\cb2                               -> \cb1 item_number varchar20),\
+\cb2                               -> \cb1 qty_ordered int not null,\
+\cb2                               -> \cb1 cust_code varchar(10),\
+\cb2                               -> \cb1 foreign key (so_number) references sales_orders(so_number) on delete cascade on update cascade,\
+\cb2                               -> \cb1 foreign key (item_number) references items(item_number) references items(item_number) on delete cascade on update cascade,\
+\cb2                               -> \cb1 foreign key (custo_code) teferences customers (cust_code) on delete cascade on update cascade);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar20),\
+qty_ordered int not null,\
+cust_code varchar(10),\
+foreign key (so_num' at line 4\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table order_details ( order_id int auto_increment primary key, so_number int, item_number varchar20), qty_ordered int not null, cust_code varchar(10), foreign key (so_number) references sales_orders(so_number) on delete cascade on update cascade, foreign key (item_number) references items(item_number) references items(item_number) on delete cascade on update cascade, foreign key (cust_code) teferences customers (cust_code) on delete cascade on update cascade);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar20), qty_ordered int not null, cust_code varchar(10), foreign key (so_num' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table order_details ( order_id int auto_increment primary key, so_number int, item_number varchar20), qty_ordered int not null, cust_code varchar(10), foreign key (so_number) references sales_orders(so_number) on delete cascade on update cascade, foreign key (item_number) references items(item_number) references items(item_number) on delete cascade on update cascade, foreign key (cust_code) references customers (cust_code) on delete cascade on update cascade);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar20), qty_ordered int not null, cust_code varchar(10), foreign key (so_num' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table order_details ( order_id int auto_increment primary key, so_number int, item_number varchar(20), qty_ordered int not null, cust_code varchar(10), foreign key (so_number) references sales_orders(so_number) on delete cascade on update cascade, foreign key (item_number) references items(item_number) references items(item_number) on delete cascade on update cascade, foreign key (cust_code) references customers (cust_code) on delete cascade on update cascade);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'references items(item_number) on delete cascade on update cascade, foreign key (' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 create table order_details ( order_id int auto_increment primary key, so_number int, item_number varchar(20), qty_ordered int not null, cust_code varchar(10), foreign key (so_number) references sales_orders(so_number) on delete cascade on update cascade, foreign key (item_number) references items(item_number) references items(item_number) on delete cascade on update cascade, foreign key (cust_code) references customers (cust_code) on delete cascade on update cascade);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'references items(item_number) on delete cascade on update cascade, foreign key (' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Order_Details (\
+\cb2                               -> \cb1 Order_ID INT AUTO_INCREMENT PRIMARY KEY,\
+\cb2                               -> \cb1 SO_Number INT,\
+\cb2                               -> \cb1 Item_Number VARCHAR(20),\
+\cb2                               -> \cb1 Qty_Ordered INT NOT NULL,\
+\cb2                               -> \cb1 Cust_Code VARCHAR(10),\
+\cb2                               -> \cb1 FOREIGN KEY (SO_Number) REFERENCES Sales_Orders(SO_Number)\
+\cb2                               -> \cb1 ON DELETE CASCADE ON UPDATE CASCADE,\
+\cb2                               -> \cb1 FOREIGN KEY (Item_Number) REFERENCES Items(Item_Number)\
+\cb2                               -> \cb1 ON DELETE CASCADE ON UPDATE CASCADE,\
+\cb2                               -> \cb1 FOREIGN KEY (Cust_Code) REFERENCES Customers(Cust_Code)\
+\cb2                               -> \cb1 ON DELETE CASCADE ON UPDATE CASCADE\
+\cb2                               -> \cb1 );\
+ERROR: 1824 (HY000): Failed to open the referenced table 'Customers'\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Order_Details ( Order_ID INT AUTO_INCREMENT PRIMARY KEY, SO_Number INT, Item_Number VARCHAR(20), Qty_Ordered INT NOT NULL, Cust_Code VARCHAR(10), FOREIGN KEY (SO_Number) REFERENCES Sales_Orders(SO_Number) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Item_Number) REFERENCES Items(Item_Number) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Cust_Code) REFERENCES Customers(Cust_Code) ON DELETE CASCADE ON UPDATE CASCADE );\
+ERROR: 1824 (HY000): Failed to open the referenced table 'Customers'\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Order_Details ( Order_ID INT AUTO_INCREMENT PRIMARY KEY, SO_Number INT, Item_Number VARCHAR(20), Qty_Ordered INT NOT NULL, Cust_Code VARCHAR(10), FOREIGN KEY (SO_Number) REFERENCES Sales_Orders(SO_Number) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Item_Number) REFERENCES Items(Item_Number) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (Cust_Code) REFERENCES Customer(Cust_Code) ON DELETE CASCADE ON UPDATE CASCADE );\
+Query OK, 0 rows affected (0.0326 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into customer (cust_code, cust_name) values\
+\cb2                               -> \cb1 ('2010-0050', 'Formed Handlebar'),\
+\cb2                               -> \cb1 ('1000-1', '20 in. Bicycle'),\
+\cb2                               -> \cb1 ('1002-1', '24 in. Bicycle'),\
+\cb2                               -> \cb1 ('1001-1', '26 in. Bicycle'),\
+\cb2                               -> \cb1 ('1003-1', '20 in. Bicycle'),\
+\cb2                               -> \cb1 ('3961-1041', 'Tire Tube, 26 in.'),\
+\cb2                               -> \cb1 ('3965-1050', 'Spoke Reflector');\
+Query OK, 7 rows affected (0.0121 sec)\
+\
+Records: 7  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 inset into sales_orders (so_number) values\
+\cb2                               -> \cb1 (1010), (1011), (1012), (1013), (1014), (1015), (1016);\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'inset into sales_orders (so_number) values\
+(1010), (1011), (1012), (1013), (1014' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 insert into sales_orders (so_number) values (1010), (1011), (1012), (1013), (1014), (1015), (1016);\
+Query OK, 7 rows affected (0.0065 sec)\
+\
+Records: 7  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES\
+\cb2                               -> \cb1 (1010, '2010-0050', 2, 'WHEEL'),\
+\cb2                               -> \cb1 (1010, '1000-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1011, '1002-1', 5, 'ETC'),\
+\cb2                               -> \cb1 1011, '1002-1', 5, 'ETC'),\
+\cb2                               -> \cb1 ^C\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES\
+\cb2                               -> \cb1 (1010, '2010-0050', 2, 'WHEEL'),\
+\cb2                               -> \cb1 (1010, '1000-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1011, '1002-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1011, '1001-1', 10, 'ETC'),\
+\cb2                               -> \cb1 (1012, '1003-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1012, '1001-1', 10, 'WHEEL'),\
+\cb2                               -> \cb1 (1013, '1001-1', 50, 'IBS'),\
+\cb2                               -> \cb1 (1014, '1003-1', 25, 'ETC'),\
+\cb2                               -> \cb1 (1015, '1003-1', 25, 'WHEEL'),\
+\cb2                               -> \cb1 (1016, '3961-1041', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '3965-1050', 50, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1003-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`Item_Number`) REFERENCES `items` (`item_number`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SHOW CREATE TABLE order_details;\
++---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\
+| Table         | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |\
++---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\
+| order_details | CREATE TABLE `order_details` (\
+  `Order_ID` int NOT NULL AUTO_INCREMENT,\
+  `SO_Number` int DEFAULT NULL,\
+  `Item_Number` varchar(20) DEFAULT NULL,\
+  `Qty_Ordered` int NOT NULL,\
+  `Cust_Code` varchar(10) DEFAULT NULL,\
+  PRIMARY KEY (`Order_ID`),\
+  KEY `SO_Number` (`SO_Number`),\
+  KEY `Item_Number` (`Item_Number`),\
+  KEY `Cust_Code` (`Cust_Code`),\
+  CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`SO_Number`) REFERENCES `Sales_Orders` (`so_number`) ON DELETE CASCADE ON UPDATE CASCADE,\
+  CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`Item_Number`) REFERENCES `Items` (`item_number`) ON DELETE CASCADE ON UPDATE CASCADE,\
+  CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`Cust_Code`) REFERENCES `Customer` (`cust_code`) ON DELETE CASCADE ON UPDATE CASCADE\
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |\
++---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+\
+1 row in set (0.0087 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 DESC items;\
++-------------+--------------+------+-----+---------+-------+\
+| Field       | Type         | Null | Key | Default | Extra |\
++-------------+--------------+------+-----+---------+-------+\
+| item_number | varchar(20)  | NO   | PRI | NULL    |       |\
+| item_name   | varchar(255) | NO   |     | NULL    |       |\
++-------------+--------------+------+-----+---------+-------+\
+2 rows in set (0.0227 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 DESC order_details;\
++-------------+-------------+------+-----+---------+----------------+\
+| Field       | Type        | Null | Key | Default | Extra          |\
++-------------+-------------+------+-----+---------+----------------+\
+| Order_ID    | int         | NO   | PRI | NULL    | auto_increment |\
+| SO_Number   | int         | YES  | MUL | NULL    |                |\
+| Item_Number | varchar(20) | YES  | MUL | NULL    |                |\
+| Qty_Ordered | int         | NO   |     | NULL    |                |\
+| Cust_Code   | varchar(10) | YES  | MUL | NULL    |                |\
++-------------+-------------+------+-----+---------+----------------+\
+5 rows in set (0.0027 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, item_number, Qty_Ordered, Cust_Code) VALUES (1010, '2010-0050', 2, 'WHEEL'), (1010, '1000-1', 5, 'WHEEL'), (1011, '1002-1', 5, 'ETC'), (1011, '1001-1', 10, 'ETC'), (1012, '1003-1', 5, 'WHEEL'), (1012, '1001-1', 10, 'WHEEL'), (1013, '1001-1', 50, 'IBS'), (1014, '1003-1', 25, 'ETC'), (1015, '1003-1', 25, 'WHEEL'), (1016, '3961-1041', 5, 'ETC'), (1016, '3965-1050', 50, 'ETC'), (1016, '1003-1', 5, 'ETC'), (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`Item_Number`) REFERENCES `items` (`item_number`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 UPDATE items SET item_number = TRIM(item_number);\
+Query OK, 0 rows affected (0.0026 sec)\
+\
+Rows matched: 0  Changed: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, item_number, Qty_Ordered, Cust_Code) VALUES (1010, '2010-0050', 2, 'WHEEL'), (1010, '1000-1', 5, 'WHEEL'), (1011, '1002-1', 5, 'ETC'), (1011, '1001-1', 10, 'ETC'), (1012, '1003-1', 5, 'WHEEL'), (1012, '1001-1', 10, 'WHEEL'), (1013, '1001-1', 50, 'IBS'), (1014, '1003-1', 25, 'ETC'), (1015, '1003-1', 25, 'WHEEL'), (1016, '3961-1041', 5, 'ETC'), (1016, '3965-1050', 50, 'ETC'), (1016, '1003-1', 5, 'ETC'), (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`Item_Number`) REFERENCES `items` (`item_number`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES (1010, '2010-0050', 2, 'WHEEL'), (1010, '1000-1', 5, 'WHEEL'), (1011, '1002-1', 5, 'ETC'), (1011, '1001-1', 10, 'ETC'), (1012, '1003-1', 5, 'WHEEL'), (1012, '1001-1', 10, 'WHEEL'), (1013, '1001-1', 50, 'IBS'), (1014, '1003-1', 25, 'ETC'), (1015, '1003-1', 25, 'WHEEL'), (1016, '3961-1041', 5, 'ETC'), (1016, '3965-1050', 50, 'ETC'), (1016, '1003-1', 5, 'ETC'), (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`Item_Number`) REFERENCES `items` (`item_number`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 ALTER TABLE order_details MODIFY Item_Number VARCHAR(50) COLLATE utf8mb4_unicode_ci;\
+ERROR: 3780 (HY000): Referencing column 'Item_Number' and referenced column 'item_number' in foreign key constraint 'order_details_ibfk_2' are incompatible.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT COLUMN_NAME, COLLATION_NAME \
+\cb2                               -> \cb1 FROM INFORMATION_SCHEMA.COLUMNS \
+\cb2                               -> \cb1 WHERE TABLE_NAME = 'items' AND COLUMN_NAME = 'item_number';\
++-------------+--------------------+\
+| COLUMN_NAME | COLLATION_NAME     |\
++-------------+--------------------+\
+| item_number | utf8mb4_0900_ai_ci |\
++-------------+--------------------+\
+1 row in set (0.0029 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 \
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT COLUMN_NAME, COLLATION_NAME \
+\cb2                               -> \cb1 FROM INFORMATION_SCHEMA.COLUMNS \
+\cb2                               -> \cb1 WHERE TABLE_NAME = 'order_details' AND COLUMN_NAME = 'Item_Number';\
++-------------+--------------------+\
+| COLUMN_NAME | COLLATION_NAME     |\
++-------------+--------------------+\
+| Item_Number | utf8mb4_0900_ai_ci |\
++-------------+--------------------+\
+1 row in set (0.0017 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 ALTER TABLE order_details MODIFY Item_Number VARCHAR(50) COLLATE utf8mb4_unicode_ci;\
+ERROR: 3780 (HY000): Referencing column 'Item_Number' and referenced column 'item_number' in foreign key constraint 'order_details_ibfk_2' are incompatible.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 ALTER TABLE order_details DROP FOREIGN KEY order_details_ibfk_2;\
+Query OK, 0 rows affected (0.0128 sec)\
+\
+Records: 0  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 \
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 ALTER TABLE order_details ADD CONSTRAINT order_details_ibfk_2\
+\cb2                               -> \cb1 FOREIGN KEY (Item_Number) REFERENCES items(item_number)\
+\cb2                               -> \cb1 ON DELETE CASCADE ON UPDATE CASCADE;\
+Query OK, 0 rows affected (0.0313 sec)\
+\
+Records: 0  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES (1010, '2010-0050', 2, 'WHEEL'), (1010, '1000-1', 5, 'WHEEL'), (1011, '1002-1', 5, 'ETC'), (1011, '1001-1', 10, 'ETC'), (1012, '1003-1', 5, 'WHEEL'), (1012, '1001-1', 10, 'WHEEL'), (1013, '1001-1', 50, 'IBS'), (1014, '1003-1', 25, 'ETC'), (1015, '1003-1', 25, 'WHEEL'), (1016, '3961-1041', 5, 'ETC'), (1016, '3965-1050', 50, 'ETC'), (1016, '1003-1', 5, 'ETC'), (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`Cust_Code`) REFERENCES `customer` (`cust_code`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT cust_code FROM customer;\
++-----------+\
+| cust_code |\
++-----------+\
+| 1000-1    |\
+| 1001-1    |\
+| 1002-1    |\
+| 1003-1    |\
+| 2010-0050 |\
+| 3961-1041 |\
+| 3965-1050 |\
++-----------+\
+7 rows in set (0.0004 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT cust_code FROM customer \
+\cb2                               -> \cb1 WHERE cust_code IN ('WHEEL', 'ETC', 'IBS', 'NEW');\
+Empty set (0.0038 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO customer (cust_code, cust_name, address) VALUES \
+\cb2                               -> \cb1 ('WHEEL', 'Wheel Company', '123 Street'),\
+\cb2                               -> \cb1 ('ETC', 'ETC Corporation', '456 Avenue'),\
+\cb2                               -> \cb1 ('IBS', 'IBS Solutions', '789 Road'),\
+\cb2                               -> \cb1 ('NEW', 'New Enterprise', '101 Highway');\
+ERROR: 1054 (42S22): Unknown column 'address' in 'field list'\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO customer (cust_code, cust_name) VALUES  ('WHEEL', 'Wheel Company', '123 Street'), ('ETC', 'ETC Corporation', '456 Avenue'), ('IBS', 'IBS Solutions', '789 Road'), ('NEW', 'New Enterprise', '101 Highway');\
+ERROR: 1136 (21S01): Column count doesn't match value count at row 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES (1010, '2010-0050', 2, 'WHEEL'), (1010, '1000-1', 5, 'WHEEL'), (1011, '1002-1', 5, 'ETC'), (1011, '1001-1', 10, 'ETC'), (1012, '1003-1', 5, 'WHEEL'), (1012, '1001-1', 10, 'WHEEL'), (1013, '1001-1', 50, 'IBS'), (1014, '1003-1', 25, 'ETC'), (1015, '1003-1', 25, 'WHEEL'), (1016, '3961-1041', 5, 'ETC'), (1016, '3965-1050', 50, 'ETC'), (1016, '1003-1', 5, 'ETC'), (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`Cust_Code`) REFERENCES `customer` (`cust_code`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 UPDATE customer SET cust_code = TRIM(cust_code);\
+Query OK, 0 rows affected (0.0009 sec)\
+\
+Rows matched: 7  Changed: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES (1010, '2010-0050', 2, 'WHEEL'), (1010, '1000-1', 5, 'WHEEL'), (1011, '1002-1', 5, 'ETC'), (1011, '1001-1', 10, 'ETC'), (1012, '1003-1', 5, 'WHEEL'), (1012, '1001-1', 10, 'WHEEL'), (1013, '1001-1', 50, 'IBS'), (1014, '1003-1', 25, 'ETC'), (1015, '1003-1', 25, 'WHEEL'), (1016, '3961-1041', 5, 'ETC'), (1016, '3965-1050', 50, 'ETC'), (1016, '1003-1', 5, 'ETC'), (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`Cust_Code`) REFERENCES `customer` (`cust_code`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 DELETE FROM order_details \
+\cb2                               -> \cb1 WHERE Cust_Code NOT IN (SELECT cust_code FROM customer);\
+Query OK, 0 rows affected (0.0038 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES\
+\cb2                               -> \cb1 (1010, '2010-0050', 2, 'WHEEL'),\
+\cb2                               -> \cb1 (1010, '1000-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1011, '1002-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1011, '1001-1', 10, 'ETC'),\
+\cb2                               -> \cb1 (1012, '1003-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1012, '1001-1', 10, 'WHEEL'),\
+\cb2                               -> \cb1 (1013, '1001-1', 50, 'IBS'),\
+\cb2                               -> \cb1 (1014, '1003-1', 25, 'ETC'),\
+\cb2                               -> \cb1 (1015, '1003-1', 25, 'WHEEL'),\
+\cb2                               -> \cb1 (1016, '3961-1041', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '3965-1050', 50, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1003-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`Cust_Code`) REFERENCES `customer` (`cust_code`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT cust_code FROM customer WHERE cust_code IN ('WHEEL', 'ETC', 'IBS', 'NEW');\
+Empty set (0.0009 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO customer (cust_code, cust_name, address) VALUES \
+\cb2                               -> \cb1 ('WHEEL', 'Wheel Company', '123 Main St'),\
+\cb2                               -> \cb1 ('ETC', 'ETC Corp', '456 Broadway'),\
+\cb2                               -> \cb1 ('IBS', 'IBS Solutions', '789 Market St'),\
+\cb2                               -> \cb1 ('NEW', 'New Enterprise', '101 Innovation Rd');\
+\
+ERROR: 1054 (42S22): Unknown column 'address' in 'field list'\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO customer (cust_code, cust_name) VALUES \
+\cb2                               -> \cb1 ('WHEEL', 'Wheel Company'),\
+\cb2                               -> \cb1 ('ETC', 'ETC Corp'),\
+\cb2                               -> \cb1 ('IBS', 'IBS Solutions'),\
+\cb2                               -> \cb1 ('NEW', 'New Enterprise');\
+Query OK, 4 rows affected (0.0072 sec)\
+\
+Records: 4  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT * FROM customer WHERE cust_code IN ('WHEEL', 'ETC', 'IBS', 'NEW');\
++-----------+----------------+\
+| cust_code | cust_name      |\
++-----------+----------------+\
+| ETC       | ETC Corp       |\
+| IBS       | IBS Solutions  |\
+| NEW       | New Enterprise |\
+| WHEEL     | Wheel Company  |\
++-----------+----------------+\
+4 rows in set (0.0020 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES\
+\cb2                               -> \cb1 (1010, '2010-0050', 2, 'WHEEL'),\
+\cb2                               -> \cb1 (1010, '1000-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1011, '1002-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1011, '1001-1', 10, 'ETC'),\
+\cb2                               -> \cb1 (1012, '1003-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1012, '1001-1', 10, 'WHEEL'),\
+\cb2                               -> \cb1 (1013, '1001-1', 50, 'IBS'),\
+\cb2                               -> \cb1 (1014, '1003-1', 25, 'ETC'),\
+\cb2                               -> \cb1 (1015, '1003-1', 25, 'WHEEL'),\
+\cb2                               -> \cb1 (1016, '3961-1041', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '3965-1050', 50, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1003-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`Item_Number`) REFERENCES `items` (`item_number`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Order_Details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES (1010, '2010-0050', 2, 'WHEEL'), (1010, '1000-1', 5, 'WHEEL'), (1011, '1002-1', 5, 'ETC'), (1011, '1001-1', 10, 'ETC'), (1012, '1003-1', 5, 'WHEEL'), (1012, '1001-1', 10, 'WHEEL'), (1013, '1001-1', 50, 'IBS'), (1014, '1003-1', 25, 'ETC'), (1015, '1003-1', 25, 'WHEEL'), (1016, '3961-1041', 5, 'ETC'), (1016, '3965-1050', 50, 'ETC'), (1016, '1003-1', 5, 'ETC'), (1016, '1000-1', 4, 'NEW');\
+ERROR: 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`tbd_u2`.`order_details`, CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`Item_Number`) REFERENCES `items` (`item_number`) ON DELETE CASCADE ON UPDATE CASCADE)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 DROP TABLE IF EXISTS order_details;\
+Query OK, 0 rows affected (0.0355 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 DROP TABLE IF EXISTS customer;\
+Query OK, 0 rows affected (0.0038 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE customer (\
+\cb2                               -> \cb1     cust_code VARCHAR(50) PRIMARY KEY,\
+\cb2                               -> \cb1     cust_name VARCHAR(100)\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0132 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE order_details (\
+\cb2                               -> \cb1     SO_Number INT,\
+\cb2                               -> \cb1     Item_Number VARCHAR(50),\
+\cb2                               -> \cb1     Qty_Ordered INT,\
+\cb2                               -> \cb1     Cust_Code VARCHAR(50),\
+\cb2                               -> \cb1     PRIMARY KEY (SO_Number, Item_Number),\
+\cb2                               -> \cb1     FOREIGN KEY (Cust_Code) REFERENCES customer(cust_code) ON DELETE CASCADE ON UPDATE CASCADE\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0101 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO customer (cust_code, cust_name) VALUES \
+\cb2                               -> \cb1 ('WHEEL', 'Wheel Company'),\
+\cb2                               -> \cb1 ('ETC', 'ETC Corp'),\
+\cb2                               -> \cb1 ('IBS', 'IBS Solutions'),\
+\cb2                               -> \cb1 ('NEW', 'New Enterprise');\
+Query OK, 4 rows affected (0.0031 sec)\
+\
+Records: 4  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO order_details (SO_Number, Item_Number, Qty_Ordered, Cust_Code) VALUES\
+\cb2                               -> \cb1 (1010, '2010-0050', 2, 'WHEEL'),\
+\cb2                               -> \cb1 (1010, '1000-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1011, '1002-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1011, '1001-1', 10, 'ETC'),\
+\cb2                               -> \cb1 (1012, '1003-1', 5, 'WHEEL'),\
+\cb2                               -> \cb1 (1012, '1001-1', 10, 'WHEEL'),\
+\cb2                               -> \cb1 (1013, '1001-1', 50, 'IBS'),\
+\cb2                               -> \cb1 (1014, '1003-1', 25, 'ETC'),\
+\cb2                               -> \cb1 (1015, '1003-1', 25, 'WHEEL'),\
+\cb2                               -> \cb1 (1016, '3961-1041', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '3965-1050', 50, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1003-1', 5, 'ETC'),\
+\cb2                               -> \cb1 (1016, '1000-1', 4, 'NEW');\
+Query OK, 13 rows affected (0.0037 sec)\
+\
+Records: 13  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 select * from order_details;\
++-----------+-------------+-------------+-----------+\
+| SO_Number | Item_Number | Qty_Ordered | Cust_Code |\
++-----------+-------------+-------------+-----------+\
+|      1010 | 1000-1      |           5 | WHEEL     |\
+|      1010 | 2010-0050   |           2 | WHEEL     |\
+|      1011 | 1001-1      |          10 | ETC       |\
+|      1011 | 1002-1      |           5 | ETC       |\
+|      1012 | 1001-1      |          10 | WHEEL     |\
+|      1012 | 1003-1      |           5 | WHEEL     |\
+|      1013 | 1001-1      |          50 | IBS       |\
+|      1014 | 1003-1      |          25 | ETC       |\
+|      1015 | 1003-1      |          25 | WHEEL     |\
+|      1016 | 1000-1      |           4 | NEW       |\
+|      1016 | 1003-1      |           5 | ETC       |\
+|      1016 | 3961-1041   |           5 | ETC       |\
+|      1016 | 3965-1050   |          50 | ETC       |\
++-----------+-------------+-------------+-----------+\
+13 rows in set (0.0073 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Contacts (\
+\cb2                               -> \cb1     Contact_ID INT PRIMARY KEY,\
+\cb2                               -> \cb1     Name VARCHAR(50) NOT NULL,\
+\cb2                               -> \cb1     Company VARCHAR(50),\
+\cb2                               -> \cb1     Address VARCHAR(255),\
+\cb2                               -> \cb1     Zipcode VARCHAR(10)\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0087 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Contact_Phones (\
+\cb2                               -> \cb1     Phone_ID INT AUTO_INCREMENT PRIMARY KEY,\
+\cb2                               -> \cb1     Contact_ID INT,\
+\cb2                               -> \cb1     Phone_Number VARCHAR(20) NOT NULL,\
+\cb2                               -> \cb1     FOREIGN KEY (Contact_ID) REFERENCES Contacts(Contact_ID)\
+\cb2                               -> \cb1         ON DELETE CASCADE ON UPDATE CASCADE\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0140 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Contacts (Contact_ID, Name, Company, Address, Zipcode) VALUES\
+\cb2                               -> \cb1 (1, 'Joe', 'ABC', '123', '12345'),\
+\cb2                               -> \cb1 (2, 'Jane', 'XYZ', '456', '14454'),\
+\cb2                               -> \cb1 (3, 'Chris', 'PDQ', '789', '14423');\
+Query OK, 3 rows affected (0.0034 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Contact_Phones (Contact_ID, Phone_Number) VALUES\
+\cb2                               -> \cb1 (1, '5532'), (1, '2234'), (1, '3211'),\
+\cb2                               -> \cb1 (2, '3421'),\
+\cb2                               -> \cb1 (3, '2341'), (3, '6655');\
+Query OK, 6 rows affected (0.0034 sec)\
+\
+Records: 6  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT * FROM Contact_Phones;\
++----------+------------+--------------+\
+| Phone_ID | Contact_ID | Phone_Number |\
++----------+------------+--------------+\
+|        1 |          1 | 5532         |\
+|        2 |          1 | 2234         |\
+|        3 |          1 | 3211         |\
+|        4 |          2 | 3421         |\
+|        5 |          3 | 2341         |\
+|        6 |          3 | 6655         |\
++----------+------------+--------------+\
+6 rows in set (0.0006 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Professors (\
+\cb2                               -> \cb1     IDProf INT PRIMARY KEY,\
+\cb2                               -> \cb1     Prof_Name VARCHAR(50) NOT NULL\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0084 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Students (\
+\cb2                               -> \cb1     IDSt INT PRIMARY KEY,\
+\cb2                               -> \cb1     LastName VARCHAR(50) NOT NULL\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0094 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Grades (\
+\cb2                               -> \cb1     Grade_ID INT AUTO_INCREMENT PRIMARY KEY,\
+\cb2                               -> \cb1     IDSt INT,\
+\cb2                               -> \cb1     IDProf INT,\
+\cb2                               -> \cb1     Grade INT NOT NULL,\
+\cb2                               -> \cb1     FOREIGN KEY (IDSt) REFERENCES Students(IDSt)\
+\cb2                               -> \cb1         ON DELETE CASCADE ON UPDATE CASCADE,\
+\cb2                               -> \cb1     FOREIGN KEY (IDProf) REFERENCES Professors(IDProf)\
+\cb2                               -> \cb1         ON DELETE CASCADE ON UPDATE CASCADE\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0151 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Professors (IDProf, Prof_Name) VALUES\
+\cb2                               -> \cb1 (1, 'Bernasconi'),\
+\cb2                               -> \cb1 (2, 'Borner'),\
+\cb2                               -> \cb1 (3, 'Schmid');\
+Query OK, 3 rows affected (0.0030 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Students (IDSt, LastName) VALUES\
+\cb2                               -> \cb1 (1, 'Mueller'),\
+\cb2                               -> \cb1 (2, 'Meier'),\
+\cb2                               -> \cb1 (3, 'Tobler');\
+Query OK, 3 rows affected (0.0033 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 INSERT INTO Grades (IDSt, IDProf, Grade) VALUES\
+\
+\cb2                               -> \cb1 (1, 3, 5),\
+\cb2                               -> \cb1 (2, 2, 4),\
+\cb2                               -> \cb1 (3, 1, 6);\
+Query OK, 3 rows affected (0.0034 sec)\
+\
+Records: 3  Duplicates: 0  Warnings: 0\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 \
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 SELECT * FROM grades;\
++----------+------+--------+-------+\
+| Grade_ID | IDSt | IDProf | Grade |\
++----------+------+--------+-------+\
+|        1 |    1 |      3 |     5 |\
+|        2 |    2 |      2 |     4 |\
+|        3 |    3 |      1 |     6 |\
++----------+------+--------+-------+\
+3 rows in set (0.0002 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Customers (\
+\cb2                               -> \cb1     Cust_ID INT PRIMARY KEY,\
+\cb2                               -> \cb1     Cust_name VARCHAR(100),\
+\cb2                               -> \cb1     Cust_Address VARCHAR(255)\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0053 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Customerss (\
+\cb2                               -> \cb1     Cust_ID INT PRIMARY KEY,\
+\cb2                               -> \cb1     Cust_name VARCHAR(100),\
+\cb2                               -> \cb1     Cust_Address VARCHAR(255)\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0164 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE Orders (\
+\cb2                               -> \cb1     Order_ID INT PRIMARY KEY,\
+\cb2                               -> \cb1     Order_Date DATE,\
+\cb2                               -> \cb1     Cust_ID INT,\
+\cb2                               -> \cb1     FOREIGN KEY (Cust_ID) REFERENCES Customerss(Cust_ID)\
+\cb2                               -> \cb1     ON DELETE CASCADE ON UPDATE CASCADE\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0109 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  tbd_u2 \cb5  SQL \cf2 \cb2 > \cb1 CREATE TABLE OrderDetails (\
+\cb2                               -> \cb1     Order_ID INT,\
+\cb2                               -> \cb1     Cust_ID INT,\
+\cb2                               -> \cb1     Cust_name VARCHAR(100),\
+\cb2                               -> \cb1     PRIMARY KEY (Order_ID, Cust_ID),\
+\cb2                               -> \cb1     FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID)\
+\cb2                               -> \cb1     ON DELETE CASCADE ON UPDATE CASCADE,\
+\cb2                               -> \cb1     FOREIGN KEY (Cust_ID) REFERENCES Customerss(Cust_ID)\
+\cb2                               -> \cb1     ON DELETE CASCADE ON UPDATE CASCADE\
+\cb2                               -> \cb1 );\
+Query OK, 0 rows affected (0.0134 sec)}
