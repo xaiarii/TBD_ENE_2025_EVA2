@@ -1,0 +1,76 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red10\green77\blue76;\red221\green221\blue221;
+\red203\green74\blue5;\red223\green223\blue223;\red44\green44\blue44;\red89\green89\blue89;}
+{\*\expandedcolortbl;;\csgray\c0;\cspthree\c15308\c36657\c36949;\cspthree\c89412\c89412\c89412;
+\cspthree\c78529\c40049\c15121;\cspthree\c90000\c90000\c90000;\cspthree\c22745\c22745\c22745;\cspthree\c42353\c42353\c42353;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs22 \cf2 \CocoaLigature0 Last login: Tue Apr  8 16:32:57 on ttys000\
+xaia@MacBook-Air-de-Angel ~ % mysqlsh\
+\\cMySQL Shell 9.2.0\
+\
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.\
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.\
+Other names may be trademarks of their respective owners.\
+\
+Type '\\help' or '\\?' for help; '\\quit' to exit.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb5  SQL \cf2 \cb2 > \cb1 \\connect --mc root@localhost\
+Creating a Classic session to 'root@localhost'\
+Fetching global names for auto-completion... Press ^C to stop.\
+Your MySQL connection id is 24\
+Server version: 9.1.0 MySQL Community Server - GPL\
+No default schema selected; type \\use <schema> to set one.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb5  SQL \cf2 \cb2 > \cb1 show databases;\
++--------------------+\
+| Database           |\
++--------------------+\
+| information_schema |\
+| mysql              |\
+| Northwid           |\
+| performance_schema |\
+| sys                |\
++--------------------+\
+5 rows in set (0.0030 sec)\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb5  SQL \cf2 \cb2 > \cb1 yse northwid\
+\cb2                       -> \cb1 use northwid\
+\cb2                       -> \cb1 ;\
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'yse northwid\
+use northwid' at line 1\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb5  SQL \cf2 \cb2 > \cb1 use northwid;\
+Default schema set to `northwid`.\
+Fetching global names, object names from `northwid` for auto-completion... Press ^C to stop.\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  northwid \cb5  SQL \cf2 \cb2 > \cb1 show tables;\
++----------------------+\
+| Tables_in_northwid   |\
++----------------------+\
+| Categories           |\
+| CustomerCustomerDemo |\
+| CustomerDemographics |\
+| Customers            |\
+| Employees            |\
+| EmployeeTerritories  |\
+| OrderDetails         |\
+| Orders               |\
+| Products             |\
+| Region               |\
+| Shippers             |\
+| Suppliers            |\
+| Territories          |\
++----------------------+\
+13 rows in set (0.0054 sec)\
+\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  northwid \cb5  SQL \cf2 \cb2 > \cb1 select customeir, companyname, sum(unitprice * quantity) as totalcomprado\
+\cb2                                 -> \cb1 from customer\
+\cb2                                 -> \cb1 join orders using (customerid)\
+\cb2                                 -> \cb1 join orderdetailss using (orderid)\
+\cb2                                 -> \cb1 group by customerid\
+\cb2                                 -> \cb1 order by totalcomprado\
+\cb2                                 -> \cb1 limit 1;\
+ERROR: 1146 (42S02): Table 'northwid.customer' doesn't exist\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  northwid \cb5  SQL \cf2 \cb2 > \cb1 select customeir, companyname, sum(unitprice * quantity) as totalcomprado from customers join orders using (customerid) join orderdetails using (orderid) group by customerid order by totalcomprado limit 1;\
+\
+ERROR: 1054 (42S22): Unknown column 'customeir' in 'field list'\
+\cf3 \cb4  My\cf5 SQL \cf6 \cb7  localhost \cb8  northwid \cb5  SQL \cf2 \cb2 > \cb1 \
+}
